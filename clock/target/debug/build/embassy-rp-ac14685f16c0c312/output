@@ -1,0 +1,3 @@
+cargo:rustc-link-search=/home/progr/Documents/code/rust/RustClock/clock/target/debug/build/embassy-rp-ac14685f16c0c312/out
+cargo:rerun-if-changed=build.rs
+cargo:rerun-if-changed=link-rp.x.in
