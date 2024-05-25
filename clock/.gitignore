@@ -1,2 +1,2 @@
-clock/target
-
+target
+*.lock

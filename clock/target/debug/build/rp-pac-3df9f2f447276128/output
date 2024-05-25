@@ -1,3 +1,0 @@
-cargo:rustc-link-search=/home/progr/Documents/code/rust/RustClock/clock/target/debug/build/rp-pac-3df9f2f447276128/out
-cargo:rerun-if-changed=device.x
-cargo:rerun-if-changed=build.rs
