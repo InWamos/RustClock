@@ -1,0 +1,9 @@
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/libembedded_io_async-c2a38eaed0b4f971.rmeta: /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/lib.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/mod.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/slice_mut.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/slice_ref.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/../README.md
+
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/embedded_io_async-c2a38eaed0b4f971.d: /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/lib.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/mod.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/slice_mut.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/slice_ref.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/../README.md
+
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/lib.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/mod.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/slice_mut.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/impls/slice_ref.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-async-0.6.1/src/../README.md:

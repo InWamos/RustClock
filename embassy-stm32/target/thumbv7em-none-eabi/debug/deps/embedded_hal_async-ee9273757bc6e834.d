@@ -1,0 +1,10 @@
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/libembedded_hal_async-ee9273757bc6e834.rmeta: /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/lib.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/delay.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/digital.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/i2c.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/spi.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/../README.md
+
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/embedded_hal_async-ee9273757bc6e834.d: /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/lib.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/delay.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/digital.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/i2c.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/spi.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/../README.md
+
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/lib.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/delay.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/digital.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/i2c.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/spi.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-hal-async-1.0.0/src/../README.md:

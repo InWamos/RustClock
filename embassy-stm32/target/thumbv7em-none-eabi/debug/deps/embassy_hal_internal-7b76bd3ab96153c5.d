@@ -1,0 +1,13 @@
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/libembassy_hal_internal-7b76bd3ab96153c5.rmeta: /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/lib.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/fmt.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/atomic_ring_buffer.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/drop.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/macros.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/peripheral.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/ratio.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/interrupt.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/../README.md
+
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/embassy_hal_internal-7b76bd3ab96153c5.d: /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/lib.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/fmt.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/atomic_ring_buffer.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/drop.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/macros.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/peripheral.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/ratio.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/interrupt.rs /home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/../README.md
+
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/lib.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/fmt.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/atomic_ring_buffer.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/drop.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/macros.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/peripheral.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/ratio.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/interrupt.rs:
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-hal-internal/src/../README.md:

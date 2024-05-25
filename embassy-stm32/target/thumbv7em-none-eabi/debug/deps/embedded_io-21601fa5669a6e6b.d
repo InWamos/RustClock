@@ -1,0 +1,9 @@
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/libembedded_io-21601fa5669a6e6b.rmeta: /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/lib.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/mod.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/slice_mut.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/slice_ref.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/../README.md
+
+/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/thumbv7em-none-eabi/debug/deps/embedded_io-21601fa5669a6e6b.d: /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/lib.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/mod.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/slice_mut.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/slice_ref.rs /home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/../README.md
+
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/lib.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/mod.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/slice_mut.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/impls/slice_ref.rs:
+/home/progr/.cargo/registry/src/index.crates.io-6f17d22bba15001f/embedded-io-0.6.1/src/../README.md:

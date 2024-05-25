@@ -1,0 +1,3 @@
+cargo:rustc-link-search=/home/progr/Documents/code/rust/embassy-rs/embassy/embassy-stm32/target/debug/build/cortex-m-rt-565826aaf30221c3/out
+cargo:rerun-if-changed=build.rs
+cargo:rerun-if-changed=link.x.in

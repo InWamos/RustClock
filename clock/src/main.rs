@@ -1,127 +1,62 @@
 #![no_std]
 #![no_main]
-#![allow(unused_imports)] // Add this line to allow unused imports
 
-use core::cell::RefCell;
-use core::panic::PanicInfo;
+use cyw43_pio::PioSpi;
+use defmt::*;
 use embassy_executor::Spawner;
-
-// GPIO
-use embassy_rp::gpio::{Input, Level, Output, Pull};
-use embassy_rp::peripherals::{PIN_0, PIN_12, PIN_13, PIN_14, PIN_15, PIN_16, PIN_17, SPI0};
-
-// PWM
-use embassy_rp::pwm::{Config as PwmConfig, Pwm};
-
-// ADC
-use embassy_rp::adc::{
-    Adc, Async, Channel as AdcChannel, Config as AdcConfig, InterruptHandler as InterruptHandlerAdc,
-};
-
-// USB
-use embassy_rp::usb::{Driver, InterruptHandler};
-use embassy_rp::{bind_interrupts, peripherals::USB};
-use log::info;
-
-// Channel
-use embassy_sync::blocking_mutex::raw::ThreadModeRawMutex;
-use embassy_sync::channel::{Channel, Receiver, Sender};
-
-// Timer
-use embassy_time::{Delay, Timer};
-
-// Select futures
-use embassy_futures::select::select;
-use embassy_futures::select::Either::{First, Second};
-
-// Display
-use core::fmt::Write;
-use embassy_embedded_hal::shared_bus::blocking::spi::SpiDeviceWithConfig;
-use embassy_rp::spi;
-use embassy_rp::spi::{Blocking, Spi};
-use embassy_sync::blocking_mutex::raw::NoopRawMutex;
-use embassy_sync::blocking_mutex::Mutex;
-use embedded_graphics::mono_font::iso_8859_16::FONT_10X20;
-use embedded_graphics::mono_font::MonoTextStyle;
-use embedded_graphics::pixelcolor::Rgb565;
-use embedded_graphics::prelude::*;
-use embedded_graphics::text::renderer::CharacterStyle;
-use embedded_graphics::text::Text;
-use heapless::String;
-use lab05_ex3_4_5::SPIDeviceInterface;
-use st7789::{Orientation, ST7789};
-
-const DISPLAY_FREQ: u32 = 64_000_000;
+use embassy_rp::bind_interrupts;
+use embassy_rp::gpio::{Level, Output};
+use embassy_rp::peripherals::{DMA_CH0, PIO0};
+use embassy_rp::pio::{InterruptHandler, Pio};
+use embassy_time::{Duration, Timer};
+use static_cell::StaticCell;
+use {defmt_rtt as _, panic_probe as _};
 
 bind_interrupts!(struct Irqs {
-    USBCTRL_IRQ => InterruptHandler<USB>;
-    ADC_IRQ_FIFO => InterruptHandlerAdc;
+    PIO0_IRQ_0 => InterruptHandler<PIO0>;
 });
 
-
 #[embassy_executor::task]
-async fn logger_task(driver: Driver<'static, USB>) {
-    embassy_usb_logger::run!(1024, log::LevelFilter::Info, driver);
+async fn wifi_task(runner: cyw43::Runner<'static, Output<'static>, PioSpi<'static, PIO0, 0, DMA_CH0>>) -> ! {
+    runner.run().await
 }
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
-    let peripherals = embassy_rp::init(Default::default());
+    let p = embassy_rp::init(Default::default());
+    let fw = include_bytes!("../../../../cyw43-firmware/43439A0.bin");
+    let clm = include_bytes!("../../../../cyw43-firmware/43439A0_clm.bin");
 
-    // The USB driver, for serial debugging, you might need it ;)
-    let driver = Driver::new(peripherals.USB, Irqs);
-    spawner.spawn(logger_task(driver)).unwrap();
+    // To make flashing faster for development, you may want to flash the firmwares independently
+    // at hardcoded addresses, instead of baking them into the program with `include_bytes!`:
+    //     probe-rs download 43439A0.bin --format bin --chip RP2040 --base-address 0x10100000
+    //     probe-rs download 43439A0_clm.bin --format bin --chip RP2040 --base-address 0x10140000
+    //let fw = unsafe { core::slice::from_raw_parts(0x10100000 as *const u8, 230321) };
+    //let clm = unsafe { core::slice::from_raw_parts(0x10140000 as *const u8, 4752) };
 
-    // ------------------------ DISPLAY ----------------------------
+    let pwr = Output::new(p.PIN_23, Level::Low);
+    let cs = Output::new(p.PIN_25, Level::High);
+    let mut pio = Pio::new(p.PIO0, Irqs);
+    let spi = PioSpi::new(&mut pio.common, pio.sm0, pio.irq0, cs, p.PIN_24, p.PIN_29, p.DMA_CH0);
 
-    // FONT STYLE
-    let mut style = MonoTextStyle::new(&FONT_10X20, Rgb565::GREEN);
-    style.set_background_color(Some(Rgb565::BLACK));
+    static STATE: StaticCell<cyw43::State> = StaticCell::new();
+    let state = STATE.init(cyw43::State::new());
+    let (_net_device, mut control, runner) = cyw43::new(state, pwr, spi, fw).await;
+    unwrap!(spawner.spawn(wifi_task(runner)));
 
-    // ************** Display initialization - DO NOT MODIFY! *****************
-    let miso = peripherals.PIN_4;
-    let display_cs = peripherals.PIN_17;
-    let mosi = peripherals.PIN_19;
-    let clk = peripherals.PIN_18;
-    let rst = peripherals.PIN_0;
-    let dc = peripherals.PIN_16;
-    let mut display_config = spi::Config::default();
-    display_config.frequency = DISPLAY_FREQ;
-    display_config.phase = spi::Phase::CaptureOnSecondTransition;
-    display_config.polarity = spi::Polarity::IdleHigh;
+    control.init(clm).await;
+    control
+        .set_power_management(cyw43::PowerManagementMode::PowerSave)
+        .await;
 
-    // Init SPI
-    let spi: Spi<'_, _, Blocking> =
-        Spi::new_blocking(peripherals.SPI0, clk, mosi, miso, display_config.clone());
-    let spi_bus: Mutex<NoopRawMutex, _> = Mutex::new(RefCell::new(spi));
+    let delay = Duration::from_secs(1);
+    loop {
+        info!("led on!");
+        control.gpio_set(0, true).await;
+        Timer::after(delay).await;
 
-    let display_spi = SpiDeviceWithConfig::new(
-        &spi_bus,
-        Output::new(display_cs, Level::High),
-        display_config,
-    );
-
-    let dc = Output::new(dc, Level::Low);
-    let rst = Output::new(rst, Level::Low);
-    let di = SPIDeviceInterface::new(display_spi, dc);
-
-    // Init ST7789 LCD
-    let mut display = ST7789::new(di, rst, 240, 240);
-    display.init(&mut Delay).unwrap();
-    display.set_orientation(Orientation::Portrait).unwrap();
-    display.clear(Rgb565::BLACK).unwrap();
-    // ************************************************************************
-
-    // Clear display
-    display.clear(Rgb565::BLACK).unwrap();
-
-    let mut text = String::<64>::new();
-    write!(text, "Info").unwrap(); // led_color must be defined first
-
-    Text::new(&text, Point::new(40, 110), style)
-        .draw(&mut display)
-        .unwrap();
-
-    // Small delay for yielding
-    Timer::after_millis(1).await;
+        info!("led off!");
+        control.gpio_set(0, false).await;
+        Timer::after(delay).await;
+    }
 }
